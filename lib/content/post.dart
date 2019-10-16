@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:insta/content/posticon.dart';
+import 'package:insta/data/database.dart';
 
 import '../data/constants.dart';
 
@@ -61,12 +62,21 @@ class _PostState extends State<Post> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Icon(
-                      Icons.account_circle,
-                      color: Colors.black,
-                      size: Constants.iconsSize,
+                    Container(
+                      width: Constants.iconsSize,
+                      height: Constants.iconsSize,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(Database.getInstance().findProfilePhotoByUsername(username))
+                        )
+                      ),
                     ),
-                    Text("$username", style: Constants.postTextStyle),
+                    Padding(
+                      padding: EdgeInsets.only(left: Constants.postUsernameLeftPadding),
+                      child: Text("$username", style: Constants.postTextStyle),
+                    ),
                   ],
                 ),
                 Row(

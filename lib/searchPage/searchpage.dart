@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:insta/data/constants.dart';
 import 'package:insta/data/database.dart';
 import 'package:insta/searchPage/searchpageform.dart';
+import 'package:insta/searchPage/userslist.dart';
 import 'package:insta/staticPages/botpanel.dart';
 import 'package:insta/staticPages/toppanel.dart';
 import 'package:insta/user/user.dart';
@@ -15,7 +15,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage>{
   TextEditingController controller = TextEditingController();
-  Iterable<User> users;
+  Iterable<User> users = List();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +24,7 @@ class _SearchPageState extends State<SearchPage>{
           children: <Widget>[
             TopPanel(),
             SearchForm(findUsers, controller),
-
+            UsersList(users)
           ],
         ),
       ),
@@ -35,7 +35,7 @@ class _SearchPageState extends State<SearchPage>{
   void findUsers(){
     setState(() {
       users = Database.getInstance().getUsers()
-          .where((a) => a.getNickname().contains(controller.text));
+          .where((a) => a.getUsername().contains(controller.text));
     });
   }
 

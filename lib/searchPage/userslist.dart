@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:insta/data/constants.dart';
+import 'package:insta/searchPage/userresult.dart';
 import 'package:insta/user/user.dart';
 
 class UsersList extends StatelessWidget{
@@ -6,9 +8,13 @@ class UsersList extends StatelessWidget{
   UsersList(this.users);
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [],
-    );
+      return Expanded(
+        child: ListView(
+          children: [
+            ...users.map((a)=> FoundedUser(a))
+          ],
+        ),
+      );
   }
 
 }

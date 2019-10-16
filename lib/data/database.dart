@@ -61,7 +61,14 @@ class Database{
     for(User u in _users){
       posts.addAll(u.getPosts());
     }
+    posts.shuffle();
     return posts;
+  }
+
+  String findProfilePhotoByUsername(String username){
+    return _users
+        .firstWhere((a) => a.getUsername() == username)
+        .getProfileIcon();
   }
 
 }
