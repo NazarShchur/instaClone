@@ -39,7 +39,7 @@ class _PostState extends State<Post> {
   String username;
 
   @override
-  void initState() {
+  void initState(){
     likesCount = 0;
     username = widget._username;
     super.initState();
