@@ -1,5 +1,5 @@
 import 'package:insta/data/constants.dart';
-import 'package:insta/content/post.dart';
+import 'package:insta/content/post/post.dart';
 import 'package:insta/user/user.dart';
 
 class Database{

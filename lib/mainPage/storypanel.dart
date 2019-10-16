@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:insta/data/constants.dart';
-import 'package:insta/content/story.dart';
+import 'package:insta/content/story/story.dart';
 
 class StoryPanel extends StatefulWidget {
   final List<Story> _stories;

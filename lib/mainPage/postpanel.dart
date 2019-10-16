@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:insta/content/post.dart';
+import 'package:insta/content/post/post.dart';
 
 class PostPanel extends StatefulWidget {
   final List<Post> _posts;

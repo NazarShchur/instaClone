@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:insta/data/database.dart';
 import 'package:insta/mainPage/postpanel.dart';
-import 'package:insta/content/story.dart';
+import 'package:insta/content/story/story.dart';
 import 'package:insta/mainPage/storypanel.dart';
 import 'package:insta/staticPages/toppanel.dart';
 
