@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:insta/data/constants.dart';
 import 'package:insta/searchPage/userresult.dart';
 import 'package:insta/user/user.dart';
 

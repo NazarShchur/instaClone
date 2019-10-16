@@ -5,10 +5,14 @@ import 'package:insta/user/user.dart';
 class Database{
   static Database _database;
   List<User> _users;
+
+  Database._();
+
   setUsers(List<User> users) => _users = users;
+
   static Database getInstance(){
     if(_database == null){
-      _database = Database();
+      _database = Database._();
       _database.setUsers(
           <User>[
             User(
