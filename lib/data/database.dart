@@ -57,22 +57,18 @@ class Database{
     }
     return _database;
   }
-  List<User> getUsers(){
-    return _users;
-  }
-  List<Post> getPosts(){
-    List<Post> posts = List();
-    for(User u in _users){
-      posts.addAll(u.getPosts());
-    }
-    posts.shuffle();
-    return posts;
-  }
 
-  String findProfilePhotoByUsername(String username){
-    return _users
+  List<User> getUsers() => _users;
+
+  List<Post> getAllPosts() => _users
+      .map((a)=> a.getPosts())
+      .expand((a)=>a)
+      .toList();
+
+
+  String findProfilePhotoByUsername(String username) => _users
         .firstWhere((a) => a.getUsername() == username)
         .getProfileIcon();
-  }
+
 
 }

@@ -16,7 +16,7 @@ class StoryState extends State<Story> {
   String imgUrl;
   String username = "username";
   StoryState(this.imgUrl);
-
+  Future<Image> img;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,11 +40,33 @@ class StoryState extends State<Story> {
               Text("$username", style: Constants.storyTextStyle)
             ],
           ),
-          onTap: () {
-            setState(() {
+          onTap: (){
+            setState((){
               isWatched = true;
+              showDialog(
+                context: context,
+                builder: (BuildContext context) => showStory()
+              );
             });
           }),
+    );
+  }
+  FutureBuilder<Image> showStory(){
+    return FutureBuilder<Image>(
+      future: waitImg(),
+      builder: (context, snapshot){
+        if(snapshot.hasData){
+          return Image(image: AssetImage(imgUrl));
+        }
+        return CircularProgressIndicator();
+      },
+    );
+  }
+
+  Future<Image> waitImg() async{
+    await Future.delayed(Duration(seconds: 3), (){});
+    return Image(
+      image: AssetImage(imgUrl),
     );
   }
 }
