@@ -1,4 +1,6 @@
-import 'package:insta/data/constants.dart';
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 import 'package:insta/content/post/post.dart';
 import 'package:insta/user/user.dart';
 
@@ -10,60 +12,42 @@ class Database{
 
   setUsers(List<User> users) => _users = users;
 
-  static Database getInstance(){
+  static Future<Database> getInstance() async {
     if(_database == null){
+      print("hello1");
       _database = Database._();
-      _database.setUsers(
-          <User>[
-            User(
-                Constants.username1,
-                [Post(Constants.icon1, Constants.username1),
-                  Post(Constants.icon2, Constants.username1),
-                  Post(Constants.icon3, Constants.username1),
-                  Post(Constants.icon4, Constants.username1)
-                ],
-              Constants.profileIcon1
-            ),
-            User(
-                Constants.username2,
-                [Post(Constants.icon6, Constants.username2),
-                  Post(Constants.icon7,  Constants.username2),
-                  Post(Constants.icon1,  Constants.username2),
-                  Post(Constants.icon4,  Constants.username2)
-                ],
-              Constants.profileIcon2
-            ),
-            User(
-                Constants.username3,
-                [Post(Constants.icon7,  Constants.username3),
-                  Post(Constants.icon2, Constants.username3),
-                  Post(Constants.icon5, Constants.username3),
-                  Post(Constants.icon3, Constants.username3)
-                ],
-              Constants.profileIcon3
-            ),
-            User(
-                Constants.username4,
-                [Post(Constants.icon6, Constants.username4),
-                  Post(Constants.icon5, Constants.username4),
-                  Post(Constants.icon7, Constants.username4),
-                  Post(Constants.icon2, Constants.username4)
-                ],
-              Constants.profileIcon4
-            ),
+      _database._users = List<User>();
+      var response;
+      try {
+        for(int i = 1; i < 5; i++){
+          response = await http.get("https://5dc307521666f6001477f7f8.mockapi.io/User/$i");
+         _database._users.add(User.fromJson(jsonDecode(response.body)));
+        }
+      } catch (e){
+        print(e.toString());
+      }
 
-          ]
-      );
     }
+    print(_database._users);
     return _database;
   }
-
+//  static List<User> usersFromJson(List<Map<String, dynamic>> json){
+//
+//    List<User> users = List();
+//    for(Map<String, dynamic> j in json){
+//      users.add(User.fromJson(j));
+//    }
+//    print(users);
+//    return users;
+//  }
   List<User> getUsers() => _users;
 
-  List<Post> getAllPosts() => _users
-      .map((a)=> a.getPosts())
-      .expand((a)=>a)
-      .toList();
+  List<Post> getAllPosts() {
+    return _users
+        .map((a)=> a.getPosts())
+        .expand((a)=>a)
+        .toList();
+  }
 
 
   String findProfilePhotoByUsername(String username) => _users

@@ -2,19 +2,33 @@
 import 'package:insta/content/post/post.dart';
 
 class User{
-  String _username;
-  List<Post> _posts;
-  String _profileIconUrl;
-  User(this._username, this._posts, this._profileIconUrl);
-  String getUsername() => _username;
-  List<Post> getPosts() => _posts;
-  String getProfileIcon() => _profileIconUrl;
+  int id;
+  String username;
+  List<Post> posts;
+  String profileIconUrl;
 
-  setNickname(String nickname) => _username = nickname;
+  User({this.username, this.posts, this.profileIconUrl});
 
+  User.test({this.id, this.username});
+  String getUsername() => username;
+  List<Post> getPosts() => posts;
+  String getProfileIcon() => profileIconUrl;
+
+  setNickname(String nickname) => username = nickname;
+
+  factory User.fromJson(Map<String, dynamic> json){
+    return User(
+      username: json['username'],
+      profileIconUrl: json['profileIconUrl'],
+      posts: Post.postsFromJson(json['posts'])
+    );
+  }
   @override
   String toString() {
-    return 'User{_nickname: $_username}';
+    return"""
+    id: $id
+    username: $username
+    """;
   }
 
 

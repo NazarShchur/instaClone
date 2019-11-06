@@ -35,7 +35,9 @@ class BotPanel extends StatelessWidget {
               Icons.add_box,
               size: Constants.botPanelIconsSize,
             ),
-            onPressed: (){},
+            onPressed: (){
+              Navigator.pushNamed(context, '/test');
+            },
           ),
           IconButton(
             icon: Icon(

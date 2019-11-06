@@ -19,6 +19,21 @@ class Post extends StatefulWidget {
 
   Post(this._imgUrl, this._username);
 
+  static List<Post> postsFromJson(List<dynamic> json){
+    List<Post> posts = List();
+    for(dynamic j in json){
+      posts.add(Post.fromJson(j));
+    }
+    return posts;
+  }
+
+  factory Post.fromJson(dynamic json){
+    return Post(
+      json['imgUrl'],
+      json['username']
+    );
+  }
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||

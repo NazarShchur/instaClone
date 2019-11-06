@@ -34,8 +34,7 @@ class _SearchPageState extends State<SearchPage>{
 
   void findUsers(){
     setState(() {
-      users = Database.getInstance().getUsers()
-          .where((a) => a.getUsername().contains(controller.text));
+      users = null;
     });
   }
 

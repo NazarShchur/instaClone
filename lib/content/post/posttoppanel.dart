@@ -28,7 +28,7 @@ class PostTopPanel extends StatelessWidget{
                     shape: BoxShape.circle,
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage(Database.getInstance().findProfilePhotoByUsername(_username))
+                        image: AssetImage(Constants.icon1)
                     )
                 ),
               ),

@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:insta/data/database.dart';
 import 'package:insta/mainPage/postpanel.dart';
 import 'package:insta/mainPage/storypanel.dart';
 
 class Content extends StatefulWidget {
-  final PostPanel _postPanel;
+  final FutureBuilder _postPanel;
   final StoryPanel _storyPanel;
 
   Content(this._storyPanel, this._postPanel);
@@ -12,7 +13,7 @@ class Content extends StatefulWidget {
 }
 
 class ContentState extends State<Content>{
-  PostPanel postPanel;
+  FutureBuilder<Database> postPanel;
   StoryPanel storyPanel;
 
   ContentState(this.storyPanel, this.postPanel);

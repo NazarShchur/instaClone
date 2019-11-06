@@ -28,11 +28,18 @@ class MainPage extends StatelessWidget{
                     Story(Constants.icon2),
                     Story(Constants.icon4)
                   ]),
-                  PostPanel(
-                    [
-                      ...Database.getInstance().getAllPosts()
-                    ],
-                  ),
+                 FutureBuilder<Database>(
+                   future: Database.getInstance(),
+                   builder: (context, snapshot){
+                     if(snapshot.hasData){
+                       return PostPanel([
+                         ...snapshot.data.getAllPosts()
+                       ]);
+                     } else {
+                       return Center(child: CircularProgressIndicator());
+                     }
+                   },
+                 )
                 ),
               ],
               direction: Axis.vertical,
