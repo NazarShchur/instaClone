@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:insta/data/constants.dart';
 
-class TopPanel extends StatelessWidget {
+class TopPanel extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -49,4 +49,7 @@ class TopPanel extends StatelessWidget {
           ),
         ));
   }
+
+  @override
+  Size get preferredSize => Size.fromHeight(50.0);
 }

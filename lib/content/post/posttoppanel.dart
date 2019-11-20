@@ -21,16 +21,25 @@ class PostTopPanel extends StatelessWidget{
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Container(
-                width: Constants.iconsSize,
-                height: Constants.iconsSize,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage(Constants.icon1)
-                    )
-                ),
+              FutureBuilder(
+                future: Database.getInstance(),
+                builder: (context, snapshot){
+                  if(snapshot.hasData){
+                    return Container(
+                      width: Constants.iconsSize,
+                      height: Constants.iconsSize,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(snapshot.data.findProfilePhotoByUsername(_username))
+                          )
+                      ),
+                    );
+                  } else{
+                    return CircularProgressIndicator();
+                  }
+                },
               ),
               Padding(
                 padding: EdgeInsets.only(left: Constants.postUsernameLeftPadding),

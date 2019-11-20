@@ -42,6 +42,8 @@ class Post extends StatefulWidget {
               _imgUrl == other._imgUrl;
 
 
+  String get imgUrl => _imgUrl;
+
   @override
   int get hashCode =>
       _imgUrl.hashCode ^

@@ -25,11 +25,7 @@ class User{
   }
   @override
   String toString() {
-    return"""
-    id: $id
-    username: $username
-    """;
+    return "username: $username";
   }
-
 
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:insta/mainPage/mainpage.dart';
 import 'package:insta/searchPage/searchpage.dart';
 import 'package:insta/testhttp.dart';
+import 'package:insta/userpage/userpage.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
       home: MainPage(),
       routes: {
         '/search' : (BuildContext context) => SearchPage(),
-        '/test' : (BuildContext context) => TestHttp()
+        '/test' : (BuildContext context) => TestHttp(),
+        '/userpage' : (BuildContext context) => UserPage()
     },
       )
     ;

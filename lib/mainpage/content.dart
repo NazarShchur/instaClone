@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:insta/data/database.dart';
-import 'package:insta/mainPage/postpanel.dart';
+
 import 'package:insta/mainPage/storypanel.dart';
 
 class Content extends StatefulWidget {

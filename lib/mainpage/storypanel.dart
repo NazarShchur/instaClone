@@ -16,7 +16,7 @@ class StoryPanelState extends State<StoryPanel> {
   List<Story> stories;
 
   StoryPanelState(this.stories);
-
+  //todo rework
   @override
   Widget build(BuildContext context) {
     return Container(

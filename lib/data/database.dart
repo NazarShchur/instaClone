@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:http/http.dart' as http;
 import 'package:insta/content/post/post.dart';
@@ -14,7 +15,6 @@ class Database{
 
   static Future<Database> getInstance() async {
     if(_database == null){
-      print("hello1");
       _database = Database._();
       _database._users = List<User>();
       var response;
@@ -31,15 +31,7 @@ class Database{
     print(_database._users);
     return _database;
   }
-//  static List<User> usersFromJson(List<Map<String, dynamic>> json){
-//
-//    List<User> users = List();
-//    for(Map<String, dynamic> j in json){
-//      users.add(User.fromJson(j));
-//    }
-//    print(users);
-//    return users;
-//  }
+
   List<User> getUsers() => _users;
 
   List<Post> getAllPosts() {

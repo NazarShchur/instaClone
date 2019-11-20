@@ -2,19 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:insta/content/post/post.dart';
 
-class PostPanel extends StatefulWidget {
+class VerticalPostPanel extends StatefulWidget {
   final List<Post> _posts;
 
-  PostPanel(this._posts);
-
+  VerticalPostPanel(this._posts);
+  //todo refactor
   @override
-  State<StatefulWidget> createState() => PostPanelState(_posts);
+  State<StatefulWidget> createState() => VerticalPostPanelState(_posts);
 }
 
-class PostPanelState extends State<PostPanel> {
+class VerticalPostPanelState extends State<VerticalPostPanel> {
   List<Post> posts;
 
-  PostPanelState(this.posts);
+  VerticalPostPanelState(this.posts);
 
   @override
   Widget build(BuildContext context) {

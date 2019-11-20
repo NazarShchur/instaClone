@@ -33,8 +33,10 @@ class _SearchPageState extends State<SearchPage>{
   }
 
   void findUsers(){
-    setState(() {
-      users = null;
+    setState(() async{
+      Database db = await Database.getInstance();
+      users = db.getUsers()
+          .where((a) => a.getUsername().contains(controller.text));
     });
   }
 

@@ -27,6 +27,7 @@ abstract class Constants{
   static final double foundUserIconPaddingRight = 30.0;
   static final double postUsernameLeftPadding = 10.0;
   static final double noSuchUserFontSize = 30.0;
+  static final double userTopPanelBotBorderWidth = 1.0;
 
   static final String icon1 = 'assets/images/icon1.jpg';
   static final String icon2 = 'assets/images/icon2.jpg';
